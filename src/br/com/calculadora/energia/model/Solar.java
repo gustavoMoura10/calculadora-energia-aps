@@ -4,21 +4,30 @@ public class Solar implements Energia{
 	private int placas;
 	private Locacao locacao;
 	
+	public int getPlacas() {
+		return placas;
+	}
+
+
+	public void setPlacas(int placas) {
+		this.placas = placas;
+	}
+
+
+	public Locacao getLocacao() {
+		return locacao;
+	}
+
+
+	public void setLocacao(Locacao locacao) {
+		this.locacao = locacao;
+	}
+
+
 	@Override
 	public double valorEnergia() {
-		// TODO Auto-generated method stub
+		
 		return 0;
-	}
-	public int radiacaoPorEstado() {
-		switch (locacao.getFederacao()) {
-		case "AC":
-			return 16;
-			break;
-
-		default:
-			return 0;
-			break;
-		}
 	}
 
 }
