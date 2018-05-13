@@ -19,13 +19,17 @@ public class Solar implements Energia {
 	private static double WATTS = 240;
 
 	/**
-	 * 
+	 * Metodo que retorna o valor encapsulado das placas
 	 * @return
 	 */
 	public int getPlacas() {
 		return placas;
 	}
 
+	/**
+	 * Metodo que seta o valor das placas
+	 * @param placas
+	 */
 	public void setPlacas(int placas) {
 		this.placas = placas;
 	}
