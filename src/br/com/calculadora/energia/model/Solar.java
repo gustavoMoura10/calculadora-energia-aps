@@ -1,15 +1,41 @@
 package br.com.calculadora.energia.model;
 
 public class Solar implements Energia {
+	/**
+	 * Atributo privado do tipo int da quantidade de placas
+	 */
 	private int placas;
+	/**
+	 * Atributo privado do tipo double que dá o valor total de placas
+	 */
+	private double valorPlacas;
+	/**
+	 * Atributo privado que se refere ao objeto Locacao
+	 */
 	private Locacao locacao;
+	/**
+	 * Atributo privado estático do tipo double que dá o valor de watts gerado por cada painel
+	 */
+	private static double WATTS = 240;
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getPlacas() {
 		return placas;
 	}
 
 	public void setPlacas(int placas) {
 		this.placas = placas;
+	}
+
+	public double getValorPlacas() {
+		return valorPlacas;
+	}
+
+	public void setValorPlacas(int valorPlacas) {
+		this.valorPlacas = 779.90 * valorPlacas;
 	}
 
 	public Locacao getLocacao() {
@@ -20,31 +46,29 @@ public class Solar implements Energia {
 		this.locacao = locacao;
 	}
 
-	public void valorEnergiaPorRegiao() {
+	public double valorEnergiaRegião() {
 		switch (this.getLocacao().getRegiaoBrasil()) {
 		case "NORTE":
-			this.quantidadeDePlacas(5.5);
-			break;
+			return 5.5;
 		case "NORDESTE":
-			this.quantidadeDePlacas(5.9);
-			break;
+			return 5.9;
 		case "CENTRO-OESTE":
-			this.quantidadeDePlacas(5.7);
-			break;
+			return 5.7;
 		case "SUDESTE":
-			this.quantidadeDePlacas(5.6);
-			break;
+			return 5.6;
 		case "SUL":
-			this.quantidadeDePlacas(5.2);
-			break;
+			return 5.2;
 		default:
-			this.quantidadeDePlacas(0);
-			break;
+			return 0;
 		}
 	}
 
-	public int quantidadeDePlacas(double d) {
-		return 0;
+	public void quantidadeDePlacas(double gastoEnergia) {
+		double mediaDiaria = (gastoEnergia*Energia.KW)/ 30 ;
+		double retornoIrradiacao = mediaDiaria/this.valorEnergiaRegião();
+		int numeroPlacas = (int) Math.round(retornoIrradiacao/Solar.WATTS);
+		this.setPlacas(numeroPlacas);
+		this.setValorPlacas(numeroPlacas);
 	}
 
 }
