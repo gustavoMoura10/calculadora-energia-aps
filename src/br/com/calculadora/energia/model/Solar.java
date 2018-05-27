@@ -34,22 +34,41 @@ public class Solar implements Energia {
 		this.placas = placas;
 	}
 
+	/**
+	 * Metodo que retorna o valor encapsulado do valor das placas
+	 * @return
+	 */
 	public double getValorPlacas() {
 		return valorPlacas;
 	}
 
+	/**
+	 * Metodo que seta o valor total baseado na quantidade de placas
+	 * @param valorPlacas
+	 */
 	public void setValorPlacas(int valorPlacas) {
 		this.valorPlacas = 779.90 * valorPlacas;
 	}
 
+	/**
+	 * Metodo que retorna o valor encapsulado de locacao
+	 * @return
+	 */
 	public Locacao getLocacao() {
 		return locacao;
 	}
-
+	
+	/**
+	 * Metodo que seta o valor de locacao
+	 * @param locacao
+	 */
 	public void setLocacao(Locacao locacao) {
 		this.locacao = locacao;
 	}
 
+	/**
+	 * Metodo que retorna um numero real baseado na irradiação de cada região do Brasil
+	 */
 	public double valorEnergiaRegião() {
 		switch (this.getLocacao().getRegiaoBrasil()) {
 		case "NORTE":
@@ -67,6 +86,11 @@ public class Solar implements Energia {
 		}
 	}
 
+	/**
+	 * Metodo que recebe o valor de gasto mensal de energia do úsuario. Com o valor da irradiação 
+	 * baseado na região já feitas, ele determina quantas placas solares é necessário
+	 * @param gastoEnergia
+	 */
 	public void quantidadeDePlacas(double gastoEnergia) {
 		double mediaDiaria = (gastoEnergia*Energia.KW)/ 30 ;
 		double retornoIrradiacao = mediaDiaria/this.valorEnergiaRegião();

@@ -4,6 +4,10 @@ public class LocacaoException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Metodo contrutor que passa para a mãe uma exceção
+	 * @param excecao
+	 */
 	public LocacaoException(String excecao) {
 		super(excecao);
 	}
